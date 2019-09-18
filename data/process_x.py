@@ -1,7 +1,7 @@
 ##### (1) Import Modules ###################################################################################################
 from itertools import islice
 from functions import tuple_str, all_window, init_code
-import protvec_dict, factor_of_three, eight_embedding_dict, new_embedding_dict
+from protvec_functions import eight_embedding_dict, three_embedding_dict
 from numpy import array
 import numpy as np
 import glob
@@ -21,7 +21,7 @@ counter = 0
 
 ##### (4) Run Main Code ####################################################################################################
 #### Depending on either eight or three state alternate between which dictionary to use!
-threeGrams = new_embedding_dict() # import the dictionary for three state (103 dimensions)
+threeGrams = three_embedding_dict() # import the dictionary for three state (103 dimensions)
 #threeGrams = eight_embedding_dict() # import the dictionary for eight state (108 dimensions)
 empty_word = [0] * 103 # padding vector - length dep on 103 or 108 
 
