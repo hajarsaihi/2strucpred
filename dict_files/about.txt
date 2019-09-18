@@ -1,0 +1,2 @@
+This section contains the csv files to create two dictionaries 103 (3-state) and 108 (8-state) embeddings.
+Each file contains 8000 words and their relative embeddings in protein space.
