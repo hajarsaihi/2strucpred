@@ -1,0 +1,1 @@
+This section contains the final neural network architechture for the final three and eight state models.
