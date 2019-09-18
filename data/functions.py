@@ -91,12 +91,12 @@ def init_code (dssp_file):
 	'''start up code combining the functions to yield a string of amino acids'''
 	df = dssp_to_df (dssp_file, 'val_IDs_chain.txt')
 	# AA
-  seq = get_all_sequence(df, 'AA')
-  seq_list = list(seq)
+	seq = get_all_sequence(df, 'AA')
+	seq_list = list(seq)
   
   # SS
 	ss = get_all_sequence(df, 'SS')
-  ss_list = eight_to_3(ss_list) # !convert the eight structures into three - if not, hash this out!
+	ss_list = eight_to_3(ss_list) # !convert the eight structures into three - if not, hash this out!
 	ss_list = list(ss)
 
 	aa_string = tuple_str(seq_list) # convert them into string
