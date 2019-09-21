@@ -1,2 +1,2 @@
-# Protpred 1.0
+# 2StrucPred 1.0
 Novel fast secondary structure prediction using machine learning algorithms
