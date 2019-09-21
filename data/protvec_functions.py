@@ -7,7 +7,7 @@ import random
 
 def three_embedding_dict():
 
-	df = pd.read_csv('103_embedding.csv', header=None)
+	df = pd.read_csv('/Users/0/Desktop/2strucpred/dict_files/103_embedding.csv', header=None)
 
 	#convert the df rows into a list of rows
 	rows_as_list=[]
@@ -28,7 +28,7 @@ def three_embedding_dict():
 
 def eight_embedding_dict():
 
-	df = pd.read_csv('108_embedding.csv', header=None)
+	df = pd.read_csv('/Users/0/Desktop/2strucpred/dict_files/108_embedding.csv', header=None)
 
 	#convert the df rows into a list of rows
 	rows_as_list=[]

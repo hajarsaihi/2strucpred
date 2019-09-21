@@ -7,8 +7,9 @@ import numpy as np
 import glob
 
 ##### (2) Get Data #########################################################################################################
-filenames = glob.glob("/Volumes/Hajar's HDD/MSc_data/large_proteins/PDB_files/train30_PDB/set1196/*.dssp") # set the location of DSSP files
+filenames = glob.glob("/Users/0/Desktop/2strucpred/data/dssp_files/train/*.dssp") # set the location of DSSP files (val/train/test)
 PDB_files = []
+#PDB_files = ['1A0A.dssp', '1J1J.dssp', '1J2G.dssp'] # test file
 
 for path in filenames:
 	file = path[-9:] # last 9 is dssp file name
@@ -20,9 +21,9 @@ error_files = []
 counter = 0
 
 #### Depending on either eight or three state alternate between which dictionary to use!
-threeGrams = three_embedding_dict() # import the dictionary for three state (103 dimensions)
-#threeGrams = eight_embedding_dict() # import the dictionary for eight state (108 dimensions)
-empty_word = [0] * 103 # padding vector - length dep on 103 or 108 
+#threeGrams = three_embedding_dict() # import the dictionary for three state (103 dimensions)
+threeGrams = eight_embedding_dict() # import the dictionary for eight state (108 dimensions)
+empty_word = [0] * 108 # padding vector - length dep on 103 or 108 
 
 ##### (4) Run Main Code ####################################################################################################
 for file in PDB_files: # iterate over 'PDB_files' list with dssp names
@@ -62,4 +63,4 @@ a = array(aa_array)
 print (a.shape)
 
 ##### (5) Output File ####################################################################################################
-np.save('x_train.npy', a, allow_pickle=True) # save the file - change name dep on dim
+np.save('x_train.npy', a, allow_pickle=True) # save the file - change name dep on train/val/test

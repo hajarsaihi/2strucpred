@@ -7,14 +7,15 @@ from numpy import array
 import numpy as np
 
 ##### (2) Get Data #########################################################################################################
-filenames = glob.glob("/Volumes/Hajar's HDD/MSc_data/large_proteins/PDB_files/validation_PDB/*.dssp")
+filenames = glob.glob("/Users/0/Desktop/2strucpred/data/dssp_files/train/*.dssp")
 error_files = []
 PDB_files = []
+#PDB_files = ['1A0A.dssp', '1J1J.dssp', '1J2G.dssp'] 
 
 for path in filenames:
 	file = path[-9:] # last 9 is dssp file name
 	PDB_files.append(file)
-  
+
 ##### (3) Def Dictionary and lists #########################################################################################
 ss_array = []
 count = 0 
@@ -28,8 +29,8 @@ for file in PDB_files:
 		ss_string = ss
 
 		for data in ss_string:
-			#onehot_encoded = one_hot_encode('BEGHIST-', data) # Use this for eight state
-			onehot_encoded = one_hot_encode('EHC', data) # Use this for three state
+			onehot_encoded = one_hot_encode('BEGHIST-', data) # Use this for eight state
+			#onehot_encoded = one_hot_encode('EHC', data) # Use this for three state
 			final_one_hot = np.array(onehot_encoded)
 			final_one_hot = final_one_hot.flatten() # flatten the data
 			y = final_one_hot.tolist()

@@ -10,7 +10,7 @@ import os
 #######################################################################################################################
 ###### FUNCTIONS
 def init_chain(textfile): # this make a df with the PDB IDs and what chain for each one to use
-	path = "/Volumes/Hajar's HDD/MSc_data/large_proteins/PDB_files/PDB_with_chain/"+textfile
+	path = "/Users/0/Desktop/2strucpred/data/dssp_files/"+textfile
 	chainli = open(path, 'r') # open the chain list file
 	pdb_df = pd.read_csv(chainli, names = ['PDB_ID']) # read this into a pandas df
 	pdb_df = pdb_df.drop_duplicates() # some PDB IDs are repeated
@@ -20,7 +20,7 @@ def init_chain(textfile): # this make a df with the PDB IDs and what chain for e
 
 def dssp_to_df(dssp_file, chain_file):
 	'''convert the dssp file into a df for easy use later'''
-	path = "/Volumes/Hajar's HDD/MSc_data/large_proteins/PDB_files/validation_PDB/"+dssp_file # def the path loc dep on pdb set (test/val/train)
+	path = "/Users/0/Desktop/2strucpred/data/dssp_files/train/"+dssp_file # def the path loc dep on pdb set (test/val/train)
 
 	df = pd.read_csv(path, names = ['Residue','Chain','Position','AA','SS','3H','4H','5H','Bend','Chiral',
 		'BB1','BB2', 'BBres','BSlabel', 'Solvent_Acc']) # import dssp file into a pandas df
@@ -89,14 +89,14 @@ def tuple_str(window):
 
 def init_code (dssp_file):
 	'''start up code combining the functions to yield a string of amino acids'''
-	df = dssp_to_df (dssp_file, 'val_IDs_chain.txt')
+	df = dssp_to_df (dssp_file, 'train30_IDs_chain.txt') # change this dep on what set you are using
 	# AA
 	seq = get_all_sequence(df, 'AA')
 	seq_list = list(seq)
   
   # SS
 	ss = get_all_sequence(df, 'SS')
-	ss_list = eight_to_3(ss_list) # !convert the eight structures into three - if not, hash this out!
+	ss_list = eight_to_3(ss) # !convert the eight structures into three - if not, hash this out!
 	ss_list = list(ss)
 
 	aa_string = tuple_str(seq_list) # convert them into string
@@ -122,11 +122,11 @@ def one_hot_encode (categories, data):
 
 def eight_to_3(ss_string): 
   '''convert 8 class ss into 3 class ss'''
-	ss_str = []
-	for x in ss_string:
-		if x == 'T' or x == 'S' or x == 'I' or x == 'G' or x == 'B' or x == '-':
-			x = 'C'
-			ss_str.append(x)
-		else:
-			ss_str.append(x)
-	return ss_str
+  ss_str = []
+  for x in ss_string:
+  	if x == 'T' or x == 'S' or x == 'I' or x == 'G' or x == 'B' or x == '-':
+  		x = 'C'
+  		ss_str.append(x)
+  	else:
+  		ss_str.append(x)
+  return ss_str
